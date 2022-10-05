@@ -1,0 +1,51 @@
+{
+    "table": "model-draft.table",
+    "date_started": "2022-09-30",
+    "date_finished": null,
+    "reviewer_name": null,
+    "reviews": [
+        {
+            "key": "id",
+            "loop": [
+                {
+                    "who": "R",
+                    "comment": "Missing ID",
+                    "timestamp": "2022-09-30",
+                    "value_suggestions": null,
+                    "accepted": null
+                }
+            ]
+        },
+        {
+            "key": "description",
+            "loop": [
+                {
+                    "who": "R",
+                    "comment": "Please add a description in a few sentences what's within the dataset",
+                    "value_suggestions": null,
+                    "timestamp": "2022-09-30",
+                    "accepted": null
+                }
+            ]
+        },
+        {
+            "key": "publicationDate",
+            "loop": [
+                {
+                    "who": "R",
+                    "comment": "Wrong format",
+                    "value_suggestions": "2021-03-29",
+                    "timestamp": "2022-09-30",
+                    "accepted": null
+                },
+                {
+                    "who": "C",
+                    "comment": "You're right, thank you!",
+                    "value_suggestions": null,
+                    "timestamp": "2022-10-01",
+                    "accepted": "yes"
+                }
+            ]
+        }
+    ]
+}
