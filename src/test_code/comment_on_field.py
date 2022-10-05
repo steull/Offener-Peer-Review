@@ -47,9 +47,9 @@ def comment_key(list_of_keys, value):
     askComment = input(f"--- Do you want to change: '{list_of_keys}': '{value}'? "
                        f"Press 'y' or any other letter! --- ")
     if askComment == "y":
-        comment = input(f"--- Add your comment: ")
+        comment = input(f"--- Add your comment on '{list_of_keys[len(list_of_keys) - 1]}': ")
         # !!! The key is wrong and needs to be adjusted !!!
-        keyComments.append({list_of_keys[0]: comment})
+        keyComments.append({list_of_keys[len(list_of_keys) - 1]: comment})
         print(keyComments)
     else:
         print("--- Next field ---")
