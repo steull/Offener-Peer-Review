@@ -1,28 +1,48 @@
 import json
 
+# Liste, in der die einzelnen Keys abgefragt werden
+key_list = []
+
 
 def recall_dict(k, v):
+    key_list.append(k)
     for key, value in v.items():
+        key_list.append(key)
         if isinstance(value, dict):
+            key_list.pop()
             recall_dict(key, value)
         elif isinstance(value, list):
+            key_list.pop()
             recall_list(key, value)
         else:
-            print(f"2: '{k}'-->{key}: {value}")
+            comment_key(key_list, value)
+            key_list.pop()
+    key_list.pop()
 
 
 def recall_list(k, v):
+    key_list.append(k)
     for sublist in v:
         if sublist is None:
-            print(f"3: {k}: {v}")
+            comment_key(key_list, v)
         else:
             for key, value in sublist.items():
+                key_list.append(key)
                 if isinstance(value, dict):
+                    key_list.pop()
                     recall_dict(key, value)
                 elif isinstance(value, list):
+                    key_list.pop()
                     recall_list(key, value)
                 else:
-                    print(f"4: '{k}'--> {key}: {value}")
+                    comment_key(key_list, value)
+                    key_list.pop()
+    key_list.pop()
+
+
+def comment_key(list_of_keys, value):
+    print(*list_of_keys, sep=" - ")
+    print(f"    {value}")
 
 
 def enter_dict(file: json):
@@ -36,7 +56,9 @@ def enter_dict(file: json):
         elif isinstance(value, list):
             recall_list(key, value)
         else:
-            print(f"1: {key}: {value}")
+            key_list.append(key)
+            comment_key(key_list, value)
+            key_list.pop()
 
 
 enter_dict("files/template - V1.5.1.json")
