@@ -1,0 +1,26 @@
+[
+    {
+        "key": "name",
+        "comment": "Better name"
+    },
+    {
+        "key": "description",
+        "comment": "Add a description"
+    },
+    {
+        "key": "language",
+        "comment": "Add eng"
+    },
+    {
+        "key": "name",
+        "comment": "new name here"
+    },
+    {
+        "key": "keywords",
+        "comment": "Add another keyword"
+    },
+    {
+        "key": "publicationDate",
+        "comment": "Wrong format"
+    }
+]
