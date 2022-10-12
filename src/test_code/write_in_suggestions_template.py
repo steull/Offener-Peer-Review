@@ -14,8 +14,8 @@ def enter_comments(file: json):
 
 
 def new_entry():
-    templ = enter_suggestion_template("comment_files/comments_in_template_added.json")
-    keys_and_val_file = enter_comments("comment_files/comments.json")
+    templ = enter_suggestion_template("test_files/comment_files/comments_in_template_added.json")
+    keys_and_val_file = enter_comments("test_files/comment_files/comments.json")
     for a in keys_and_val_file:
         key_val = a.get("key")
         comment_rev = a.get("comment")
@@ -74,7 +74,7 @@ def new_entry():
 
 
 def write_in_template(comments_for_template):
-    with open("comment_files/comments_in_template_added.json", "w") as jsonFile:
+    with open("test_files/comment_files/comments_in_template_added.json", "w") as jsonFile:
         json.dump(comments_for_template, jsonFile, indent=4, ensure_ascii=True)
 
 
