@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # manually ignore folders or files
-/src/test_code/test_files
+/src/test_code/test_files/
+.idea/
