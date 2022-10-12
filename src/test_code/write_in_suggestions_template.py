@@ -38,9 +38,6 @@ def new_entry():
             templ["reviews"].append(new_key_and_suggestion_entry)
         # If dict contain keys including another dict with at least one comment
         else:
-            # Check ALL keys first, if key already exists
-            # If yes, append new dict within key
-            # If not, append new dict for the new key
             existing_keys = []
             for i in templ["reviews"]:
                 existing_keys.append(templ["reviews"][j].get("key"))
