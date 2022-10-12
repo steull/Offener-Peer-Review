@@ -43,21 +43,22 @@ def recall_list(k, v):
 
 
 def comment_key(list_of_keys, value):
-    # !!! Adjust, to print single element of list in one line !!!
+    # Optional: Adjust, to print single element of list in one line
     ask_comment = input(f"--- Do you want to comment: '{list_of_keys}': '{value}'? "
                         f"Press 'y' or any other letter! --- ")
     if ask_comment == "y":
         comment = input(f"--- Add your comment on '{list_of_keys[len(list_of_keys) - 1]}': ")
-        # !!! The key shall show all keys, if nested !!!
 
         ask_value_suggestion = input(f"--- Do you want to suggest a new value for: '{list_of_keys}': '{value}'? "
                                      f"Press 'y' or any other letter! --- ")
         if ask_value_suggestion == "y":
             value_suggestions = input(f"--- Add your suggested value on '{list_of_keys[len(list_of_keys) - 1]}': ")
+            # !!! The key shall show all keys, if nested !!!
             key_comments.append({"key": list_of_keys[len(list_of_keys) - 1],  "comment": comment,
                                  "value_suggestion": value_suggestions})
         else:
             print("--- No value suggestion added ---")
+            # !!! The key shall show all keys, if nested !!!
             key_comments.append({"key": list_of_keys[len(list_of_keys) - 1], "comment": comment,
                                  "value_suggestion": None})
     else:
