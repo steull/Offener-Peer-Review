@@ -1,9 +1,9 @@
 import json
 
-# Liste, in der die einzelnen Keys abgefragt werden
+# List to ask every key in the json
 key_list = []
-# Liste, welche die Kommentare speichert
-keyComments = []
+# List to add all comments
+key_comments = []
 
 
 def recall_dict(k, v):
@@ -44,13 +44,22 @@ def recall_list(k, v):
 
 def comment_key(list_of_keys, value):
     # !!! Adjust, to print single element of list in one line !!!
-    askComment = input(f"--- Do you want to change: '{list_of_keys}': '{value}'? "
-                       f"Press 'y' or any other letter! --- ")
-    if askComment == "y":
+    ask_comment = input(f"--- Do you want to comment: '{list_of_keys}': '{value}'? "
+                        f"Press 'y' or any other letter! --- ")
+    if ask_comment == "y":
         comment = input(f"--- Add your comment on '{list_of_keys[len(list_of_keys) - 1]}': ")
-        # !!! The key is wrong and needs to be adjusted !!!
-        keyComments.append({list_of_keys[len(list_of_keys) - 1]: comment})
-        print(keyComments)
+        # !!! The key shall show all keys, if nested !!!
+
+        ask_value_suggestion = input(f"--- Do you want to suggest a new value for: '{list_of_keys}': '{value}'? "
+                                     f"Press 'y' or any other letter! --- ")
+        if ask_value_suggestion == "y":
+            value_suggestions = input(f"--- Add your suggested value on '{list_of_keys[len(list_of_keys) - 1]}': ")
+            key_comments.append({"key": list_of_keys[len(list_of_keys) - 1],  "comment": comment,
+                                 "value_suggestion": value_suggestions})
+        else:
+            print("--- No value suggestion added ---")
+            key_comments.append({"key": list_of_keys[len(list_of_keys) - 1], "comment": comment,
+                                 "value_suggestion": None})
     else:
         print("--- Next field ---")
 
@@ -70,28 +79,19 @@ def enter_dict(file: json):
             key_list.pop()
 
     with open("test_files/comment_files/comments.json", "w") as jsonFile:
-        json.dump(keyComments, jsonFile, indent=4, ensure_ascii=True)
+        json.dump(key_comments, jsonFile, indent=4, ensure_ascii=True)
 
 
 enter_dict("test_files/generalKeys.json")
 
-
 """
-def write_in_json(file: json, k, l, v):
-    # Create new dictionary with all added comments
-    print(keyComments)
-    with open("test_files/comment_files/comments.json", "w") as jsonFile:
-        json.dump(keyComments, jsonFile, indent=4, ensure_ascii=True)
+# Read the template
+# Write comment in field 'comment'
+# Write suggested_value in 'value_suggestions' (as history)
+# Write suggested_value also in a copy of template
 
-
-askComment = input(f"--- Do you want to change: '{key}': {value}'? "
-                   f"Press 'y' or any other letter! ---")
-if askComment == "y":
-    comment = input(f"--- Add your comment on field '{key}': {value}': ")
-    for kal, valu in keyComments.items():
-        if kal == key:
-            keyComments[kal] = comment
-else:
-    print("--- Next field ---")
+def write_suggestions_in_template():
+        with open("test_files/comment_files/template_comment_on_fields.json", "w") as jsonFile:
+        
 
 """
