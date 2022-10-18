@@ -14,11 +14,12 @@ def enter_comments(file: json):
 
 
 def new_entry():
-    templ = enter_suggestion_template("test_files/comment_files/comments_in_template_added.json")
-    keys_and_val_file = enter_comments("test_files/comment_files/comments.json")
+    templ = enter_suggestion_template("test_code/test_files/comment_files/comments_in_template_added.json")
+    keys_and_val_file = enter_comments("test_code/test_files/comment_files/comments.json")
     for a in keys_and_val_file:
         key_val = a.get("key")
         comment_rev = a.get("comment")
+        suggested_value_rev = a.get("value_suggestion")
 
         j = 0  # Iterate over nested dicts, to get the key name
     # If dict to list all keys and corresponding comments is empty
@@ -30,7 +31,7 @@ def new_entry():
                         "who": None,
                         "comment": comment_rev,
                         "timestamp": None,
-                        "value_suggestions": None,
+                        "value_suggestions": suggested_value_rev,
                         "accepted": None
                     }
                 ]
@@ -45,7 +46,7 @@ def new_entry():
                     new_suggestion_entry = {"who": None,
                                             "comment": comment_rev,
                                             "timestamp": None,
-                                            "value_suggestions": None,
+                                            "value_suggestions": suggested_value_rev,
                                             "accepted": None}
                     templ["reviews"][j].get("loop").append(new_suggestion_entry)
                     j += 1
@@ -60,7 +61,7 @@ def new_entry():
                             "who": None,
                             "comment": comment_rev,
                             "timestamp": None,
-                            "value_suggestions": None,
+                            "value_suggestions": suggested_value_rev,
                             "accepted": None
                         }
                     ]
@@ -71,7 +72,7 @@ def new_entry():
 
 
 def write_in_template(comments_for_template):
-    with open("test_files/comment_files/comments_in_template_added.json", "w") as jsonFile:
+    with open("test_code/test_files/comment_files/comments_in_template_added.json", "w") as jsonFile:
         json.dump(comments_for_template, jsonFile, indent=4, ensure_ascii=True)
 
 
