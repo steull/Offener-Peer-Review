@@ -79,8 +79,8 @@ def enter_dict(file: json):
             comment_key(key_list, value)
             key_list.pop()
 
-    with open("test_files/comment_files/comments.json", "w") as jsonFile:
+    with open("test_code/test_files/comment_files/comments.json", "w") as jsonFile:
         json.dump(key_comments, jsonFile, indent=4, ensure_ascii=True)
 
 
-enter_dict("test_files/generalKeys.json")
+enter_dict("test_code/test_files/generalKeys.json")

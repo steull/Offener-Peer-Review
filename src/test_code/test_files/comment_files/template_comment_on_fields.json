@@ -1,0 +1,22 @@
+{
+    "table": "model-draft.table",
+    "date_started": "2022-09-30",
+    "date_finished": null,
+    "reviewer_name": null,
+    "reviews": [
+        {
+            "key": null,
+            "loop": [
+                {
+                    "who": null,
+                    "comment": null,
+                    "timestamp": null,
+                    "value_suggestions": null,
+                    "accepted": null
+                }
+            ]
+        }
+    ],
+    "accepted": null,
+    "granted batch": null
+}

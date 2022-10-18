@@ -6,11 +6,8 @@ In src folder is the code for the local development of the Open Peer-Review.
 ## read_nested_files.py
   - Input  is a partly OEMetadata file (one category)
   - It reads each key, including nested lists and dicts
-  - Output is a list including each key with corresponding value
-## comments_on_fields.py
-  - Further development and extends read_nested_files.py
-  - After testing, it will be implemented in read_nested_files.py
-  - Output will be another json file, which includes all comments and suggested values from the Reviewer for each key
+  - Reviewer can comment and suggest values for the contributor
+    - Output will be another json file, which includes all comments and suggested values from the Reviewer for each key
 ## write_in_suggestions_template.py
   - Inputs are the comments json file from the reviewer and the template for each key
   - All comments and suggested values from comments.json will be added in the template
