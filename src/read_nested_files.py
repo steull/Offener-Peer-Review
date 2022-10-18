@@ -1,7 +1,9 @@
 import json
 
-# Liste, in der die einzelnen Keys abgefragt werden
+# List to ask every key in the json
 key_list = []
+# List to add all comments
+key_comments = []
 
 
 def recall_dict(k, v):
@@ -41,15 +43,32 @@ def recall_list(k, v):
 
 
 def comment_key(list_of_keys, value):
-    print(*list_of_keys, sep=" - ")
-    print(f"    {value}")
+    # Optional: Adjust, to print single element of list in one line
+    ask_comment = input(f"--- Do you want to comment: '{list_of_keys}': '{value}'? "
+                        f"Press 'y' or any other letter! --- ")
+    if ask_comment == "y":
+        comment = input(f"--- Add your comment on '{list_of_keys[len(list_of_keys) - 1]}': ")
+
+        ask_value_suggestion = input(f"--- Do you want to suggest a new value for: '{list_of_keys}': '{value}'? "
+                                     f"Press 'y' or any other letter! --- ")
+        if ask_value_suggestion == "y":
+            value_suggestions = input(f"--- Add your suggested value on '{list_of_keys[len(list_of_keys) - 1]}': ")
+            # !!! The key shall show all keys, if nested !!!
+            key_comments.append({"key": list_of_keys[len(list_of_keys) - 1],  "comment": comment,
+                                 "value_suggestion": value_suggestions})
+        else:
+            print("--- No value suggestion added ---")
+            # !!! The key shall show all keys, if nested !!!
+            key_comments.append({"key": list_of_keys[len(list_of_keys) - 1], "comment": comment,
+                                 "value_suggestion": None})
+    else:
+        print("--- Next field ---")
 
 
 def enter_dict(file: json):
     with open(file) as json_file:
         json_data = json.load(json_file)
 
-    keyComments = {}
     for key, value in json_data.items():
         if isinstance(value, dict):
             recall_dict(key, value)
@@ -60,5 +79,8 @@ def enter_dict(file: json):
             comment_key(key_list, value)
             key_list.pop()
 
+    with open("test_files/comment_files/comments.json", "w") as jsonFile:
+        json.dump(key_comments, jsonFile, indent=4, ensure_ascii=True)
 
-enter_dict("files/template - V1.5.1.json")
+
+enter_dict("test_files/generalKeys.json")
