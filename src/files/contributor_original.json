@@ -7,10 +7,14 @@
         null
     ],
     "subject": [
-        {"name" : "null",
-        "path": "null"},
-        {"name" : "null",
-        "path": "null"}
+        {
+            "name": "null",
+            "path": "null"
+        },
+        {
+            "name": "null",
+            "path": "null"
+        }
     ],
     "keywords": [
         null
@@ -33,20 +37,21 @@
     },
     "temporal": {
         "referenceDate": null,
-        "timeseries": [{
-            "start": null,
-            "end": null,
-            "resolution": null,
-            "alignment": null,
-            "aggregationType": null
-        },
-        {
-            "start": null,
-            "end": null,
-            "resolution": null,
-            "alignment": null,
-            "aggregationType": null
-        }
+        "timeseries": [
+            {
+                "start": null,
+                "end": null,
+                "resolution": null,
+                "alignment": null,
+                "aggregationType": null
+            },
+            {
+                "start": null,
+                "end": null,
+                "resolution": null,
+                "alignment": null,
+                "aggregationType": null
+            }
         ]
     },
     "sources": [
@@ -112,13 +117,17 @@
                         "type": null,
                         "unit": null,
                         "isAbout": [
-                            {"name" : null,
-                            "path": null}
+                            {
+                                "name": null,
+                                "path": null
+                            }
                         ],
                         "valueReference": [
-                            {"value": null,
-                            "name": null,
-                            "path" : null}
+                            {
+                                "value": null,
+                                "name": null,
+                                "path": null
+                            }
                         ]
                     },
                     {
@@ -127,13 +136,17 @@
                         "type": null,
                         "unit": null,
                         "isAbout": [
-                            {"name" : null,
-                            "path": null}
+                            {
+                                "name": null,
+                                "path": null
+                            }
                         ],
                         "valueReference": [
-                            {"value": null,
-                            "name": null,
-                            "path" : null}
+                            {
+                                "value": null,
+                                "name": null,
+                                "path": null
+                            }
                         ]
                     }
                 ],
@@ -176,7 +189,7 @@
     },
     "_comment": {
         "metadata": "Metadata documentation and explanation (https://github.com/OpenEnergyPlatform/oemetadata)",
-        "dates": "Dates and time must follow the ISO8601 including time zone (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh)",
+        "dates": "Dates and time must follow the ISO8601 including time zone (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss\u00b1hh)",
         "units": "Use a space between numbers and units (100 m)",
         "languages": "Languages must follow the IETF (BCP47) format (en-GB, en-US, de-DE)",
         "licenses": "License name must follow the SPDX License List (https://spdx.org/licenses/)",
