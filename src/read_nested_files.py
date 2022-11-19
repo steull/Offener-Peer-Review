@@ -1,9 +1,24 @@
 import json
+from omi.dialects.oep.dialect import OEP_V_1_5_Dialect
+from omi.dialects.oep.parser import JSONParser_1_5
+from omi.dialects.oep.compiler import JSONCompilerOEM15
+from omi.oem_structures.oem_v15 import OEPMetadata, Source, Timeseries
 
 # List to ask every key in the json
 key_list = []
 # List to add all comments
 key_comments = []
+
+
+def ntest_parse_15(_input_file="files/template - V1.5.1.json"):
+    with open(_input_file, "r", encoding="utf-8") as f:
+        jsn = json.load(f)
+
+        dialect15 = OEP_V_1_5_Dialect()
+        parser = dialect15._parser()
+        metadata = parser.parse(jsn)
+
+        return metadata
 
 
 def recall_dict(k, v):
@@ -54,7 +69,7 @@ def comment_key(list_of_keys, value):
         if ask_value_suggestion == "y":
             value_suggestions = input(f"--- Add your suggested value on '{list_of_keys[len(list_of_keys) - 1]}': ")
             # !!! The key shall show all keys, if nested !!!
-            key_comments.append({"key": list_of_keys[len(list_of_keys) - 1],  "comment": comment,
+            key_comments.append({"key": list_of_keys[len(list_of_keys) - 1], "comment": comment,
                                  "value_suggestion": value_suggestions})
         else:
             print("--- No value suggestion added ---")
@@ -83,4 +98,13 @@ def enter_dict(file: json):
         json.dump(key_comments, jsonFile, indent=4, ensure_ascii=True)
 
 
-enter_dict("test_files/generalKeys.json")
+# enter_dict("test_files/generalKeys.json")
+
+
+if __name__ == "__main__":
+    metadata_class: OEPMetadata = ntest_parse_15()
+
+    for key, value in metadata_class.__dict__.items():
+        print(key, value, type(key), type(value))
+
+
